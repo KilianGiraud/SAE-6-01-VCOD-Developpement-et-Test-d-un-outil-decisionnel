@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informations Projet</title>
+    <link rel="stylesheet" href="component.css">
+    <script src="script.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+    
+ 
+</head>
+<body>
+    <div class="container">
+        <form id="infoForm">
+            <!-- Section Administratif -->
+            <fieldset>
+                <legend>Administratif</legend>
+                <div class="double-column">
+                    <label for="nom_client">Nom Client :</label>
+                    <input type="text" name="nom_client" id="nom_client">
+                    <label for="societe">Société :</label>
+                    <input type="text" name="societe" id="societe">
+                    <label for="nom_investisseur">Nom Investisseur :</label>
+                    <input type="text" name="nom_investisseur" id="nom_investisseur">
+                    <label for="coordonnees_gps">Coordonnées GPS :</label>
+                    <input type="text" name="coordonnees_gps" id="coordonnees_gps">
+                    <label for="zone_chantier">Zone du chantier :</label>
+                    <input type="text" name="zone_chantier" id="zone_chantier">
+                    <label for="type_batiment">Type de bâtiment :</label>
+                    <input type="text" name="type_batiment" id="type_batiment">
+                    <label for="adresse_mail">Adresse Mail :</label>
+                    <input type="email" name="adresse_mail" id="adresse_mail">
+                    <label for="tiers_investisseur">Tiers Investisseur :</label>
+                    <input type="text" name="tiers_investisseur" id="tiers_investisseur">
+                    <label for="num_telephone">Numéro de téléphone :</label>
+                    <input type="tel" name="num_telephone" id="num_telephone">
+                    <label for="taille_centrale">Taille de la centrale :</label>
+                    <input type="text" name="taille_centrale" id="taille_centrale">
+                </div>
+            </fieldset>
+
+            <!-- Section Enedis+EDF OA -->
+            <fieldset>
+                <legend>Enedis+EDF OA</legend>
+                <div class="double-column">
+                    <label for="t0">T0 :</label>
+                    <input type="text" name="t0" id="t0">
+                    <label for="t0_18">T0+18 :</label>
+                    <input type="text" name="t0_18" id="t0_18">
+                    <label for="t0_24">T0+24 :</label>
+                    <input type="text" name="t0_24" id="t0_24">
+                    <label for="nbta">N°BTA :</label>
+                    <input type="text" name="nbta" id="nbta">
+                    <label for="prm">PRM :</label>
+                    <input type="text" name="prm" id="prm">
+                    <label for="rp">RP :</label>
+                    <input type="text" name="rp" id="rp">
+                    <label for="ncard_i">N°CARD-i :</label>
+                    <input type="text" name="ncard_i" id="ncard_i">
+                    <label for="mode_injection">Mode d'injection :</label>
+                    <input type="text" name="mode_injection" id="mode_injection">
+                </div>
+            </fieldset>
+
+            <!-- Section Mise en Service -->
+            <fieldset>
+                <legend>Mise en Service</legend>
+                <div class="double-column">
+                    <label for="demande_consuel">Demande de Consuel :</label>
+                    <input type="text" name="demande_consuel" id="demande_consuel">
+                    <label for="demande_budget">Demande de budget :</label>
+                    <input type="text" name="demande_budget" id="demande_budget">
+                    <label for="consuel_le">Consuel le :</label>
+                    <input type="text" name="consuel_le" id="consuel_le">
+                    <label for="bureau_de">Bureau de :</label>
+                    <input type="text" name="bureau_de" id="bureau_de">
+                </div>
+            </fieldset>
+
+            <!-- Section Technique -->
+            <fieldset>
+                <legend>Technique</legend>
+                <div class="double-column">
+                    <label for="pcrete">Pcrête (kWc) :</label>
+                    <input type="text" name="pcrete" id="pcrete">
+                    <label for="nombre_panneaux">Nombre de panneaux :</label>
+                    <input type="text" name="nombre_panneaux" id="nombre_panneaux">
+                    <label for="modeles_ondulateurs">Modèles d'ondulateurs :</label>
+                    <input type="text" name="modeles_ondulateurs" id="modeles_ondulateurs">
+                    <label for="numero_serie">N° de Série :</label>
+                    <input type="text" name="numero_serie" id="numero_serie">
+                    <label for="altitude">Altitude :</label>
+                    <input type="text" name="altitude" id="altitude">
+                    <label for="couverture">Couverture :</label>
+                    <input type="text" name="couverture" id="couverture">
+                    <label for="charpentier">Charpentier :</label>
+                    <input type="text" name="charpentier" id="charpentier">
+                    <label for="puissance_injectee">Puissance injectée (kVA) :</label>
+                    <input type="text" name="puissance_injectee" id="puissance_injectee">
+                    <label for="modeles_panneaux">Modèle de panneaux :</label>
+                    <input type="text" name="modeles_panneaux" id="modeles_panneaux">
+                    <label for="dimensions_panneaux">Dimensions des panneaux :</label>
+                    <input type="text" name="dimensions_panneaux" id="dimensions_panneaux">
+                    <label for="systeme_integration">Système d'intégration :</label>
+                    <input type="text" name="systeme_integration" id="systeme_integration">
+                    <label for="charpente">Charpente :</label>
+                    <input type="text" name="charpente" id="charpente">
+                </div>
+            </fieldset>
+
+            <!-- Section Devis -->
+            <fieldset>
+                <legend>Devis</legend>
+                <div class="double-column">
+                    <label for="tarif">Tarif :</label>
+                    <input type="text" name="tarif" id="tarif">
+                    <label for="couts_globaux">Coûts globaux :</label>
+                    <input type="text" name="couts_globaux" id="couts_globaux">
+                    <label for="couts_main_oeuvre">Coûts de main d'oeuvre :</label>
+                    <input type="text" name="couts_main_oeuvre" id="couts_main_oeuvre">
+                    <label for="couts_unitaires">Coûts unitaires :</label>
+                    <input type="text" name="couts_unitaires" id="couts_unitaires">
+                </div>
+            </fieldset>
+
+            <!-- Section Maintenance -->
+            <fieldset>
+                <legend>Maintenance</legend>
+                <div class="double-column">
+                    <label for="num_contrat">Numéro de contrat :</label>
+                    <input type="text" name="num_contrat" id="num_contrat">
+                    <label for="derniere_facture">Dernière facture :</label>
+                    <input type="text" name="derniere_facture" id="derniere_facture">
+                    <label for="num_facture">Numéro de facture :</label>
+                    <input type="text" name="num_facture" id="num_facture">
+                    <label for="date_debut_maintenance">Date de début de maintenance :</label>
+                    <input type="date" name="date_debut_maintenance" id="date_debut_maintenance">
+                    <label for="validation_aur">Validation Aurélien :</label>
+                    <input type="text" name="validation_aur" id="validation_aur">
+                </div>
+                <div class="button-group">
+                    <button type="button" onclick="genererPDF()">Enregistrer</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<div class="form-section">
+    <h2>Informations Administratives</h2>
+    
+    <div class="form-group">
+        <label for="numeroMatricule">Numéro de matricule</label>
+        <input type="text" id="numeroMatricule" name="numeroMatricule">
+        <span class="error-message" data-error="numeroMatricule"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="rib" class="required">RIB</label>
+        <input type="text" id="rib" name="rib" required pattern="[0-9]{5,34}">
+        <span class="error-message" data-error="rib"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="mutuelle" class="required">Mutuelle d'entreprise</label>
+        <select id="mutuelle" name="mutuelle" required>
+            <option value="">Sélectionnez une option</option>
+            <option value="choix">Choix</option>
+            <option value="dispense">Dispense</option>
+        </select>
+        <span class="error-message" data-error="mutuelle"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="permisConduire" class="required">Permis de conduire</label>
+        <select id="permisConduire" name="permisConduire" required>
+            <option value="">Sélectionnez une option</option>
+            <option value="Oui">Oui</option>
+            <option value="Non">Non</option>
+        </select>
+        <span class="error-message" data-error="permisConduire"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="documentsIdentite" class="required">Documents d'identité</label>
+        <select id="documentsIdentite" name="documentsIdentite" required>
+            <option value="">Sélectionnez une option</option>
+            <option value="CNI">CNI</option>
+            <option value="Passeport">Passeport</option>
+            <option value="TitreSejour">Titre de séjour</option>
+        </select>
+        <span class="error-message" data-error="documentsIdentite"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="autorisationTravail">Autorisation de travail (si titre de séjour)</label>
+        <input type="text" id="autorisationTravail" name="autorisationTravail" required>
+        <span class="error-message" data-error="autorisationTravail"></span>
+    </div>
+</div> 

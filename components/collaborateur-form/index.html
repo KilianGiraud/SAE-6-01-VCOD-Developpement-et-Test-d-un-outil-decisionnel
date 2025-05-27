@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire Collaborateur</title>
+    <link rel="stylesheet" href="index.css">
+    <!-- Dépendances jsPDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <!-- Composants du formulaire -->
+    <script src="./components/personal-info/personal-info.js" defer></script>
+    <script src="./components/formation-competences/formation-competences.js" defer></script>
+    <script src="./components/professional-info/professional-info.js" defer></script>
+    <script src="./components/administrative-info/administrative-info.js" defer></script>
+    <script src="./components/emergency-contact/emergency-contact.js" defer></script>
+    <script src="./components/signature-pad/signature-pad.js" defer></script>
+    <!-- Script principal -->
+    <script src="./index.js" defer></script>
+</head>
+
+<body>
+    <form id="collaborateurForm">
+        <personal-info-form></personal-info-form>
+        
+        <formation-competences-form></formation-competences-form>
+        
+        <professional-info-form></professional-info-form>
+        
+        <administrative-info-form></administrative-info-form>
+        
+        <emergency-contact-form></emergency-contact-form>
+        
+        <signature-pad-component></signature-pad-component>
+        
+        <div class="form-actions">
+            <button type="submit">Valider</button>
+            <button type="button" id="saveData">Enregistrer</button>
+        </div>
+    </form>
+</body>
+</html>

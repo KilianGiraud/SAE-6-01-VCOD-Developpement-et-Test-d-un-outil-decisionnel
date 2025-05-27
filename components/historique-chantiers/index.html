@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau HTML</title>
+    <link rel="stylesheet" href="component.css">
+    <script src="component-header.js"></script>
+</head>
+<body>
+
+<header>
+    <h1>Tableau de Bord Hebdomadaire</h1>
+    <a href="../composant-principal/components/cahier-des-charges/index.html" class="home-button">
+        home
+    </a>
+</header>
+
+<section class="controls">
+    <label for="yearSelect">Année :</label>
+    <select id="yearSelect" onchange="updateCalendar()"></select>
+
+    <label for="weekSelect">Semaine :</label>
+    <select id="weekSelect" onchange="updateDays()"></select>
+
+    <label for="datePicker">Choisir une date :</label>
+    <input type="date" id="datePicker" onchange="selectDate()">
+</section>
+
+<main class="dashboard">
+    <table class="weekly-table">
+        <thead>
+            <tr class="team">
+                <th>Équipes</th>
+                <th>Lundi <div class="day" id="day1"></div></th>
+                <th>Mardi <div class="day" id="day2"></div></th>
+                <th>Mercredi <div class="day" id="day3"></div></th>
+                <th>Jeudi <div class="day" id="day4"></div></th>
+                <th>Vendredi <div class="day" id="day5"></div></th>
+                <th>Samedi <div class="day" id="day6"></div></th>
+                <th>Dimanche <div class="day" id="day7"></div></th>
+            </tr>
+            <tr class="chantier">
+                <td class="chantier-label">Chantiers</td>
+                <td class="chantier-day" id="chantier-day1-%teamId%"></td>
+                <td class="chantier-day" id="chantier-day2-%teamId%"></td>
+                <td class="chantier-day" id="chantier-day3-%teamId%"></td>
+                <td class="chantier-day" id="chantier-day4-%teamId%"></td>
+                <td class="chantier-day" id="chantier-day5-%teamId%"></td>
+                <td class="chantier-day" id="chantier-day6-%teamId%"></td>
+                <td class="chantier-day" id="chantier-day7-%teamId%"></td>
+            </tr>
+        </thead>
+        <tbody id="teamTable">
+            <!-- Les équipes seront générées dynamiquement -->
+        </tbody>
+    </table>
+
+    <table class="summary-table">
+        <thead>
+            <tr>
+                <th>Catégorie</th>
+                <th>Total</th>
+                <th>Salarié</th>
+                <th>Intérim</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Effectifs</td>
+                <td id="total">67</td>
+                <td id="salaries">13</td>
+                <td id="interim">54</td>
+            </tr>
+            <tr>
+                <td>Eco Solaire</td>
+                <td>57</td>
+                <td>12</td>
+                <td>45</td>
+            </tr>
+            <tr>
+                <td>Meco Solaire</td>
+                <td>7</td>
+                <td>3</td>
+                <td>4</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="task-controls">
+        <button id="createTaskBtn" onclick="createTask()">Créer un chantier</button>
+        <button id="editTaskBtn" onclick="editTask()">Modifier un chantier</button>
+        <button id="deleteTaskBtn" onclick="deleteTask()">Supprimer un chantier</button>
+    </div>
+
+    <div class="task-form">
+        <label for="taskName">Nom du chantier:</label>
+        <input type="text" id="taskName" placeholder="Nom du chantier">
+        
+        <label for="teamSelect">Équipe:</label>
+        <input type="text" id="teamSelect" placeholder="Nom de l'équipe">
+        
+        <label for="taskDetails">Détails du chantier:</label>
+        <textarea id="taskDetails" placeholder="Détails du chantier"></textarea>
+        
+        <label for="taskDay">Jour:</label>
+        <select id="taskDay">
+            <option value="0">Lundi</option>
+            <option value="1">Mardi</option>
+            <option value="2">Mercredi</option>
+            <option value="3">Jeudi</option>
+            <option value="4">Vendredi</option>
+            <option value="5">Samedi</option>
+            <option value="6">Dimanche</option>
+        </select>
+    </div>
+</main>
+
+<template id="rowTemplate">
+    <tr class="team">
+        <td class="team-name">%teamName%</td>
+        <td class="work-day" id="day1-%teamId%">%details-0%</td>
+        <td class="work-day" id="day2-%teamId%">%details-1%</td>
+        <td class="work-day" id="day3-%teamId%">%details-2%</td>
+        <td class="work-day" id="day4-%teamId%">%details-3%</td>
+        <td class="work-day" id="day5-%teamId%">%details-4%</td>
+        <td class="work-day" id="day6-%teamId%">%details-5%</td>
+        <td class="work-day" id="day7-%teamId%">%details-6%</td>
+    </tr>
+</template>
+
+</body>
+</html>
+
+
+
+
+

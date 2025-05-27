@@ -1,0 +1,64 @@
+<div class="form-section">
+    <h2>Informations Personnelles</h2>
+    
+    <div class="form-group">
+        <label for="nom" class="required">Nom</label>
+        <input type="text" id="nom" name="nom" required>
+        <span class="error-message" data-error="nom"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="prenom" class="required">Prénom</label>
+        <input type="text" id="prenom" name="prenom" required>
+        <span class="error-message" data-error="prenom"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="age" class="required">Âge</label>
+        <input type="number" id="age" name="age" min="16" max="100" required>
+        <span class="error-message" data-error="age"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="dateNaissance" class="required">Date de naissance</label>
+        <input type="date" id="dateNaissance" name="dateNaissance" required>
+        <span class="error-message" data-error="dateNaissance"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="lieuNaissance" class="required">Lieu de naissance</label>
+        <input type="text" id="lieuNaissance" name="lieuNaissance" required>
+        <span class="error-message" data-error="lieuNaissance"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="adresse" class="required">Adresse</label>
+        <textarea id="adresse" name="adresse" required></textarea>
+        <span class="error-message" data-error="adresse"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="telephone" class="required">Téléphone</label>
+        <input type="tel" id="telephone" name="telephone" required pattern="^(0|\+33|0033)[1-9][0-9]{8}$">
+        <span class="error-message" data-error="telephone"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="email" class="required">Email</label>
+        <input type="email" id="email" name="email" required>
+        <span class="error-message" data-error="email"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="situationFamiliale" class="required">Situation Familiale</label>
+        <select id="situationFamiliale" name="situationFamiliale" required>
+            <option value="">Sélectionnez une situation</option>
+            <option value="Célibataire">Célibataire</option>
+            <option value="En couple">En couple avec enfant(s)</option>
+            <option value="En couple sans enfant">En couple sans enfant</option>
+            <option value="Marié avec enfant(s)">Marié avec enfant(s)</option>
+            <option value="Marié sans enfant">Marié sans enfant</option>
+        </select>
+        <span class="error-message" data-error="situationFamiliale"></span>
+    </div>
+</div> 

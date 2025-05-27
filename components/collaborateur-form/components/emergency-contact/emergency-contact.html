@@ -1,0 +1,75 @@
+<div class="form-sections-container">
+    <div class="form-section">
+        <h2>Matériel et Accès</h2>
+        
+        <div class="form-group material-section">
+            <h3>Matériel fourni</h3>
+            <div class="checkbox-container">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="ordinateur" name="materielFournis" value="Ordinateur">
+                    <label for="ordinateur">Ordinateur</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="telephone" name="materielFournis" value="Téléphone">
+                    <label for="telephone">Téléphone</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="badge" name="materielFournis" value="Badge">
+                    <label for="badge">Badge</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="identifiantsAcces" class="required">Identifiants et accès</label>
+            <select id="identifiantsAcces" name="identifiantsAcces" required>
+                <option value="">Sélectionnez une option</option>
+                <option value="Attribué">Attribué</option>
+                <option value="Non-attribué">Non-attribué</option>
+            </select>
+            <span class="error-message" data-error="identifiantsAcces"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="emailProfessionnel" class="required">Adresse e-mail professionnelle</label>
+            <select id="emailProfessionnel" name="emailProfessionnel" required>
+                <option value="">Sélectionnez une option</option>
+                <option value="Attribué">Attribué</option>
+                <option value="Non-attribué">Non-attribué</option>
+            </select>
+            <span class="error-message" data-error="emailProfessionnel"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="carteCantine">Carte de cantine / Tickets restaurant</label>
+            <select id="carteCantine" name="carteCantine">
+                <option value="">Sélectionnez une option</option>
+                <option value="Attribué">Attribué</option>
+                <option value="Non-attribué">Non-attribué</option>
+            </select>
+            <span class="error-message" data-error="carteCantine"></span>
+        </div>
+    </div>
+
+    <div class="form-section">
+        <h2>Contact d'Urgence</h2>
+        
+        <div class="form-group">
+            <label for="nomContactUrgence" class="required">Nom du contact d'urgence</label>
+            <input type="text" id="nomContactUrgence" name="nomContactUrgence" required>
+            <span class="error-message" data-error="nomContactUrgence"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="lienParente" class="required">Lien de parenté ou relation</label>
+            <input type="text" id="lienParente" name="lienParente" required>
+            <span class="error-message" data-error="lienParente"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="telephoneContactUrgence" class="required">Numéro de téléphone du contact d'urgence</label>
+            <input type="tel" id="telephoneContactUrgence" name="telephoneContactUrgence" required pattern="^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$">
+            <span class="error-message" data-error="telephoneContactUrgence"></span>
+        </div>
+    </div>
+</div> 

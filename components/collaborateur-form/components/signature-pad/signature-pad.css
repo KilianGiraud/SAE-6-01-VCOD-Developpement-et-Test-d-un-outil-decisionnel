@@ -1,0 +1,54 @@
+.form-section {
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.form-section h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+.required::after {
+    content: " *";
+    color: #ff0000;
+    font-weight: bold;
+}
+
+.error-message {
+    color: #ff0000;
+    font-size: 0.8em;
+    margin-top: 4px;
+    display: block;
+}
+
+.signature-container {
+    border: 1px solid #000;
+    margin: 10px 0;
+    background-color: #fff;
+}
+
+#signaturePad {
+    display: block;
+    touch-action: none;
+}
+
+#clearSignature {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: white;
+    color: #00b365;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+#clearSignature:hover {
+    background-color: #f0f0f0;
+    color: #00b365;
+} 

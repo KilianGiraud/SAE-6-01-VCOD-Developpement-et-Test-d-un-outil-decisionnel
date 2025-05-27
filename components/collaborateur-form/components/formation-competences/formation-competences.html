@@ -1,0 +1,52 @@
+<div class="form-section">
+    <h2>Formation et Compétences</h2>
+    
+    <div class="form-group">
+        <label class="required">Langues parlées</label>
+        <div class="checkbox-container">
+            <div class="checkbox-item">
+                <input type="checkbox" id="francais" name="langue_francais" value="Français">
+                <label for="francais">Français</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="anglais" name="langue_anglais" value="Anglais">
+                <label for="anglais">Anglais</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="italien" name="langue_italien" value="Italien">
+                <label for="italien">Italien</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="espagnol" name="langue_espagnol" value="Espagnol">
+                <label for="espagnol">Espagnol</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="allemand" name="langue_allemand" value="Allemand">
+                <label for="allemand">Allemand</label>
+            </div>
+        </div>
+        <div class="autres-langues">
+            <label for="autresLangues">Autres langues</label>
+            <input type="text" id="autresLangues" name="autres_langues" placeholder="Précisez les autres langues parlées">
+        </div>
+        <span class="error-message" data-error="langues"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="diplomes" class="required">Diplômes et certifications</label>
+        <textarea id="diplomes" name="diplomes" required></textarea>
+        <div class="documents-section">
+            <input type="checkbox" id="documents_provided_diplomes" name="documents_provided_diplomes">
+            <label for="documents_provided_diplomes">Documents fournis</label>
+        </div>
+        <span class="error-message" data-error="diplomes"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="experience_professionnelle" class="required">Expérience professionnelle précédente</label>
+        <textarea id="experience_professionnelle" name="experience_professionnelle" required></textarea>
+        <p class="experience-hint">Décrivez brièvement vos expériences professionnelles précédentes en mentionnant : 
+        les postes occupés, les entreprises, les dates et les principales responsabilités.</p>
+        <span class="error-message" data-error="experience_professionnelle"></span>
+    </div>
+</div> 

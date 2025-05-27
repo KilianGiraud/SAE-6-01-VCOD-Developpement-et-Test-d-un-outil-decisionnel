@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Web Calendar</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
+
+    <!-- Scripts FullCalendar -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+
+</head>
+<body>
+
+    <header>
+        <h1>Mon Calendrier</h1>
+    </header>
+    <p></p>
+    <button onclick="openCalendar()">Voir Calendrier</button>
+
+
+    <!-- Section pour ajouter des liens vers d'autres calendriers -->
+    <section id="calendars-links">
+        <h2>Liens vers d'autres calendriers</h2>
+        <input type="url" id="calendarLink" placeholder="Ajoutez un lien de calendrier...">
+        <button onclick="addCalendarLink()">Ajouter</button>
+        
+        <ul id="calendarLinksList"></ul>
+    </section>
+
+    <!-- Formulaire d'ajout d'événement -->
+    <div id="eventFormContainer">
+        <h2>Ajouter un événement</h2>
+        <form id="eventForm">
+            <label for="title">Titre :</label>
+            <input type="text" id="title" required>
+
+            <label for="start">Date de début :</label>
+            <input type="datetime-local" id="start" required>
+
+            <label for="end">Date de fin :</label>
+            <input type="datetime-local" id="end">
+
+            <button type="submit">Ajouter</button>
+        </form>
+    </div>
+    <button id="exportButton">Exporter en ICS</button>
+
+    <iframe id="calendar-iframe" src="calendar.html" sandbox="allow-scripts allow-same-origin allow-forms allow-modals allow-popups"
+        width="100%" height="600px" style="border: none;"></iframe>
+
+        <script src="script.js"></script>
+
+        
+</body>
+</html>

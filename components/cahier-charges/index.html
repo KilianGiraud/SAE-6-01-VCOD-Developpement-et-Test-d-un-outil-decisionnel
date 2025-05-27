@@ -1,0 +1,235 @@
+<!-- Début du document HTML -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- Titre de la page, affiché dans l'onglet du navigateur -->
+  <title>Cahier des charges DATABOX</title>
+
+  <!-- Définition de l'encodage de la page en UTF-8 pour bien gérer les caractères spéciaux -->
+  <meta charset="utf-8">
+
+  <!-- Mise en place de la politique de sécurité des contenus pour éviter les attaques XSS -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src *; media-src chavaroche-si.fr; script-src 'unsafe-inline'; style-src 'unsafe-inline';">
+
+  <!-- Début des styles CSS pour la mise en forme de la page -->
+  <style>
+    /* Style de base pour la page : police, couleur de fond, marges */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      margin: 20px;
+      padding: 20px;
+    }
+
+    /* Style pour les titres alignés au centre avec une couleur bleue */
+    h1, h2, h3 {
+      text-align: center;
+      color: #0056b3;
+    }
+
+    /* Style pour la section d'introduction */
+    .introduction {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Style pour le tableau : largeurs, bordures, et ombres */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Style pour les cellules de tableau, avec une bordure et alignement à gauche */
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+
+    /* Style pour l'en-tête du tableau avec un fond bleu et texte blanc */
+    th {
+      background: #0056b3;
+      color: white;
+    }
+
+    /* Style pour les images dans le tableau */
+    img {
+      width: 50px;
+      height: 50px;
+    }
+
+    /* Style pour les boutons, avec un fond bleu et un effet au survol */
+    button {
+      background: #0056b3;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #003f7f;
+    }
+  </style>
+</head>
+<body>
+  <!-- Début de la section d'introduction -->
+  <div class="introduction">
+    <!-- Titre principal de la page -->
+    <h1>Créer un cahier des charges</h1>
+    
+    <!-- Tableau des exigences avec des catégories, modalités et images -->
+    <table>
+      <tr>
+        <th>Catégorie</th>
+        <th>Modalité</th>
+        <th>Image</th>
+      </tr>
+      <!-- Ligne d'exemple avec des images représentant les modalités -->
+      <tr>
+        <td>IHM: Interface homme machine</td>
+        <td>Obligation</td>
+        <td><img src="./feu_tricolore_rouge.png" alt="Rouge"></td>
+      </tr>
+      <tr>
+        <td>GDD: Gestionaire de données</td>
+        <td>Besoin</td>
+        <td><img src="./feu_tricolore_jaune.png" alt="Jaune"></td>
+      </tr>
+      <tr>
+        <td>GDT: Gestionaire de travail</td>
+        <td>Formalité</td>
+        <td><img src="./feu_tricolore_vert.png" alt="Vert"></td>
+      </tr>
+    </table>
+  </div>
+  
+  <!-- Formulaire pour entrer les exigences -->
+  <form>
+    <p><strong>Entrez les exigences :</strong> <button type="button" onclick="importerCahier()">Importer</button></p>
+    <table>
+      <tr>
+        <td>Catégorie</td>
+        <td>
+          <!-- Sélecteur pour choisir la catégorie de l'exigence -->
+          <select id="reqType">
+            <option value="IHM">IHM</option>
+            <option value="GDD">GDD</option>
+            <option value="GDT">GDT</option>
+            <option value="OSI">OSI</option>
+            <option value="API">API</option>
+            <option value="SFI">SFI</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Modalité</td>
+        <td>
+          <!-- Sélecteur pour choisir le niveau de la modalité -->
+          <select id="reqLevel">
+            <option value="1">Obligation</option>
+            <option value="2">Besoin</option>
+            <option value="3">Formalité</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <!-- Zone de texte pour entrer le contenu de l'exigence -->
+        <td colspan="2"><textarea id="reqContent" rows="4" cols="50"></textarea></td>
+      </tr>
+      <tr>
+        <td colspan="2"><button type="button" onclick="remplirCahier()">Ajouter</button></td>
+      </tr>
+    </table>
+  </form>
+
+  <!-- Iframe pour afficher le cahier des charges dans un autre document -->
+  <iframe id="cahier" src="./cdcCaneva.html" title="Cahier des charges" style="width: 100%; height: 600px;"></iframe>
+
+  <!-- Bouton pour imprimer le cahier des charges -->
+  <button type="button" onclick="imprimerCahier()">Imprimer</button>
+
+  <script>
+    // Fonction pour ajouter une exigence dans l'iframe
+    function remplirCahier() {
+      var frame = document.getElementById("cahier");
+      var cahier = (frame.contentWindow || frame.contentDocument);
+      if (cahier.document) cahier = cahier.document;
+
+      var categorie = document.getElementById("reqType").value;
+      var modalite = parseInt(document.getElementById("reqLevel").value);
+      var texte = document.getElementById("reqContent").value;
+
+      var exigence = cahier.createElement("p");
+      var niveauImage = cahier.createElement("img");
+
+      // On choisit l'image en fonction de la modalité (rouge, jaune ou vert)
+      switch (modalite) {
+        case 1:
+          niveauImage.src = "./feu_tricolore_rouge.png";
+          break;
+        case 2:
+          niveauImage.src = "./feu_tricolore_jaune.png";
+          break;
+        default:
+          niveauImage.src = "./feu_tricolore_vert.png";
+      }
+
+      // On applique un style à l'image et on l'ajoute à l'exigence
+      niveauImage.style = "width: 20px; height: 20px; margin-right: 10px;";
+      exigence.appendChild(niveauImage);
+      exigence.appendChild(document.createTextNode(texte));
+
+      // On ajoute l'exigence à la catégorie correspondante dans l'iframe
+      var chapitre = cahier.getElementById(categorie);
+      if (chapitre) {
+        chapitre.appendChild(exigence);
+      } else {
+        console.error("Catégorie non trouvée dans l'iframe.");
+      }
+    }
+
+    // Fonction pour imprimer le contenu
+    function imprimerCahier() {
+      var frame = document.getElementById("cahier");
+      frame.contentWindow.print();
+    }
+
+    async function chercherCahier() {
+        return [
+            { title: "IHM - Interface utilisateur", labels: ["Obligation"], description: "L'interface doit être ergonomique." },
+            { title: "GDD - Gestion des données", labels: ["Besoin"], description: "Le système doit stocker les données de manière sécurisée." }
+        ];
+    }
+
+    // Fonction pour déterminer la modalité en fonction des labels
+    function getModalite(labels) {
+        if (labels.includes("Obligation")) return "1";
+        if (labels.includes("Besoin")) return "2";
+        return "3"; // Par défaut, on considère "Formalité"
+    }
+
+    // Fonction pour importer les exigences
+    async function importerCahier() {
+        let listeExigences = await chercherCahier();
+        
+        listeExigences.forEach(exigence => {
+            let modalite = getModalite(exigence.labels);
+            document.getElementById("reqLevel").value = modalite;
+            document.getElementById("reqContent").value = exigence.description;
+            document.getElementById("reqType").value = exigence.title.substring(0, 3); // Prend les 3 premières lettres comme code
+
+            remplirCahier();
+        });
+    }
+  </script>
+</body>
+</html>

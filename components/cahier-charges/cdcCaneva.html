@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- Définition du charset UTF-8 pour gérer les caractères spéciaux -->
+  <meta charset="UTF-8">
+  <!-- Permet de rendre la page responsive sur les appareils mobiles -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cahier des charges</title>
+  <!-- Lien vers les fichiers CSS externes pour l'affichage à l'écran et l'impression -->
+  <link rel="stylesheet" type="text/css" href="display.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="print.css" media="print">
+  <style>
+    /* Style global du body : fond clair, couleur de texte gris foncé, et marges/paddings définis */
+    body {
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    /* Container pour centrer le contenu de la page */
+    .container {
+      width: 80%;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Titre principal de la page en couleur et taille de police ajustée */
+    h1, h2, h3 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-size: 2em;
+    }
+
+    h2 {
+      font-size: 1.5em;
+    }
+
+    h3 {
+      font-size: 1.2em;
+      margin-top: 20px;
+    }
+
+    /* Bloc pour l'introduction avec un fond légèrement gris et du padding */
+    .introduction {
+      background-color: #ecf0f1;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+
+    /* Section avec une image en arrière-plan pour les contracteurs, taille et bordure arrondie */
+    .contracteurs {
+      background-size: cover;
+      height: 200px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    /* Listes de description avec des éléments bien définis et une marge à gauche pour les descriptions */
+    dl {
+      background-color: #f9f9f9;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+
+    /* Style des titres dans les listes (termes) avec une couleur bleue pour la lisibilité */
+    dt {
+      font-weight: bold;
+      color: #2980b9;
+    }
+
+    /* Style pour les descriptions avec un retrait à gauche pour plus de clarté */
+    dd {
+      margin-left: 20px;
+    }
+
+    /* Liste ordonnée avec un retrait pour une meilleure présentation */
+    ol {
+      padding-left: 20px;
+      margin-bottom: 30px;
+    }
+
+    /* Section pour le cahier des charges client avec un fond gris clair et du padding */
+    #cdcClient {
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    /* Images avec une largeur à 100% pour les rendre responsive et un bord arrondi */
+    img {
+      width: 100%;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Conteneur principal pour la page -->
+  <div class="container">
+    <div class="introduction">
+      <!-- Bloc d'image servant de fond pour la section contracteurs -->
+      <div class="contracteurs"></div>
+      <!-- Titre principal du cahier des charges -->
+      <h1>Cahier des charges</h1>
+      <!-- Sous-titres pour les différentes sections de l'introduction -->
+      <h2>Préambule</h2>
+      <h3>Modalité des exigences</h3>
+      <dl>
+        <!-- Description des différents types de modalités d'exigence -->
+         
+        <dt><strong>Obligation (feu rouge)</strong></dt>
+        <dd>Cela veut dire de l'exigence doit être respectée à la lettre.</dd>
+        <dt><strong>Besoin (feu orange)</strong></dt>
+        <dd>Cela veut dire que l'exigence doit être respectée dans le contexte global du projet.</dd>
+        <dt><strong>Formalité (feu vert)</strong></dt>
+        <dd>Cela veut dire que le respect ou non-respect de l'exigence n'a aucun impact sur le projet.</dd>
+      </dl>
+      <h3>Catégorie des exigences</h3>
+      <dl>
+        <!-- Description des catégories d'exigences pour les différentes parties du projet -->
+        <dt><strong>IHM: Interface homme-machine</strong></dt>
+        <dd>Consigner une exigence quant à la manière dont vous allez interagir avec votre système.</dd>
+        <dt><strong>GDD: Gestionnaire de données</strong></dt>
+        <dd>Consigner une exigence sur comment structurer vos données.</dd>
+        <dt><strong>GDT: Gestionnaire de travail</strong></dt>
+        <dd>Consigner une exigence en rapport avec les méthodes de travail.</dd>
+        <dt><strong>OSI: Système opérationnel</strong></dt>
+        <dd>Consigner une exigence si la databox interagit avec des OS.</dd>
+        <dt><strong>API: Interface entre applications</strong></dt>
+        <dd>Consigner une exigence si vous voulez une interaction entre deux logiciels/services.</dd>
+        <dt><strong>SFI: Système de fichiers</strong></dt>
+        <dd>Consigner une exigence par rapport à vos fichiers.</dd>
+      </dl>
+      <!-- Image montrant la structure du système Databox -->
+      <img src="./structureDatabox.png" alt="Structure Databox">
+    </div>
+
+    <!-- Liste des exigences pour chaque catégorie -->
+    <h2>Liste des exigences</h2>
+    <h3>IHM: Interface Homme Machine</h3>
+    <ol id="IHM"></ol>
+    <h3>GDD: Gestionnaire de données</h3>
+    <ol id="GDD"></ol>
+    <h3>GDT: Gestionnaire de travail</h3>
+    <ol id="GDT"></ol>
+    <h3>OSI: Système opérationnel</h3>
+    <ol id="OSI"></ol>
+    <h3>API: Interface entre applications</h3>
+    <ol id="API"></ol>
+    <h3>SFI: Système de fichiers</h3>
+    <ol id="SFI"></ol>
+    <!-- Section dédiée au cahier des charges client -->
+    <h2>Cahier des charges client</h2>
+    <div id="cdcClient"></div>
+  </div>
+</body>
+</html>

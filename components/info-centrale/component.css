@@ -1,0 +1,130 @@
+/* Définition des variables pour une personnalisation facile */
+:root {
+    --primary-color: #007BFF;
+    --secondary-color: #28a745;
+    --hover-color: #218838;
+    --border-color: #ccc;
+    --background-color: #f4f4f4;
+    --input-padding: 8px;
+    --font-size: 16px;
+}
+
+/* Styles de base pour le corps de la page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 20px;
+}
+
+/* Styles pour le conteneur principal */
+.container {
+    max-width: 900px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: auto;
+}
+
+/* Styles pour les titres des sections */
+h2 {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+/* Styles pour les sections du formulaire */
+fieldset {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+/* Styles pour les légendes des sections */
+legend {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/* Styles pour les étiquettes des champs */
+label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #333;
+}
+
+/* Styles pour les champs de saisie et les sélecteurs */
+input, select {
+    width: 100%;
+    padding: var(--input-padding);
+    margin-top: 5px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: var(--font-size);
+}
+
+/* Focus sur les champs */
+input:focus, select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+/* Styles pour le formulaire */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Styles pour les colonnes doubles */
+.double-column {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);  /* 4 colonnes */
+    gap: 20px;  /* Espacement entre les colonnes */
+}
+
+/* Styles pour chaque champ dans les colonnes */
+.double-column > div {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Styles pour les colonnes simples sur les petits écrans */
+@media (max-width: 600px) {
+    .double-column {
+        grid-template-columns: 1fr; /* Une seule colonne sur les petits écrans */
+    }
+}
+.button-group {
+    text-align: center;
+    margin-top: 20px;
+}
+
+button {
+    background: linear-gradient(135deg, hsl(120, 75%, 66%), hsl(120, 75%, 66%)); /* Dégradé rose/rouge */
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(255, 118, 136, 0.4);
+}
+
+button:hover {
+    background: linear-gradient(135deg, hsl(120, 75%, 66%), hsl(120, 75%, 66%)); /* Effet de survol plus foncé */
+    transform: scale(1.05);
+    box-shadow: 0 6px 14px rgba(255, 118, 136, 0.6);
+}
+
+button:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 6px rgba(255, 118, 136, 0.5);
+}   
