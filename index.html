@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!-- By Kilian Giraud -->
+<html lang="fr">
+<head>
+  <!-- Définition de l'encodage et des paramètres d'affichage -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Composant principal</title>
+
+  <!-- Lien vers la feuille de style principale -->
+  <link rel="stylesheet" href="static/css/styles.css">
+  
+  <!-- Importation des icônes Material Symbols -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /> 
+  
+  <!-- Inclusion du fichier JavaScript principal -->
+  <script src="/static/js/main-script.js" defer></script>
+</head>
+<body>
+  <!-- Conteneur principal de l'affichage -->
+  <div id="zoom-container">
+    
+    <!-- Bouton d'accueil (Databox Home) -->
+    <a id="databox-home" onclick="goHome()" target="_blank"></a>
+    
+    <div class="window">
+      <!-- En-tête de la fenêtre contenant les boutons de navigation -->
+      <div class="window-header">
+        <!-- Bouton pour afficher les cartes -->
+        <button class="button" onclick="changeView('cartes')" style="background-color: white;" data-label="Cartes">
+          <span class="material-symbols-outlined">map</span>
+        </button>
+        
+        <!-- Bouton pour afficher les formulaires -->
+        <button class="button" onclick="changeView('formulaires')" style="background-color: yellow;" data-label="Formulaires">
+          <span class="material-symbols-outlined">description</span>
+        </button>
+        
+        <!-- Bouton pour afficher le calendrier -->
+        <button class="button" onclick="changeView('calendrier')" style="background-color: lightblue;" data-label="Calendrier">
+          <span class="material-symbols-outlined">calendar_month</span>
+        </button>
+      </div>
+
+      <!-- Contenu affiché sur la page d'accueil -->
+      <div id="home-content">
+        <h1>Bienvenue sur notre projet</h1>
+        <p>Ce projet vise à fournir une plateforme interactive pour gérer divers modules de relevé, de prise de mesures et de consommation.</p>
+        <p>Le composant principal ainsi que les différents autres composants ont été réalisés par les étudiants de BUT 3A VCOD.</p>
+      </div>
+
+      <!-- Conteneur des onglets dynamiques (rempli par JavaScript) -->
+      <div class="tabs" id="dynamic-tabs" style="display: none;"></div>
+
+      <!-- Conteneur pour afficher les composants dynamiquement via iframe -->
+      <div id="content-container">
+        <iframe id="component-frame" src="" frameborder="0"></iframe>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
