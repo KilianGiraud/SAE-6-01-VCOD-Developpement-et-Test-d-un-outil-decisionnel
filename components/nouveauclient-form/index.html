@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulaire de nouveau client</title>
+  <!-- Google Fonts pour Roboto -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+  <!-- Feuille de style principale -->
+  <link rel="stylesheet" href="index.css">
+
+  <!-- Bibliothèques nécessaires à l'export PDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
+  <!-- Script principal -->
+  <script defer src="index.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="header-container">
+      <h1>Prévision du Chantier</h1>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+      <form onsubmit="return false;">
+        <!-- Section Photovoltaïque -->
+        <section id="solution-photovoltaique" class="card full-width">
+          <h2>Solution Photovoltaïque</h2>
+          <div class="solution-container">
+            <!-- Modules -->
+            <div class="subcard">
+              <h3>Modules</h3>
+              <div class="form-group">
+                <label for="moduleSelect">Sélectionner un module</label>
+                <select id="moduleSelect" onchange="updateModuleInfo()"></select>
+              </div>
+              <div class="form-group">
+                <label for="moduleFabricant">Fabricant</label>
+                <input type="text" id="moduleFabricant" readonly>
+              </div>
+              <div class="grid-longueur-largeur">
+                <div class="form-group">
+                  <label for="moduleLongueur">Longueur</label>
+                  <input type="text" id="moduleLongueur" readonly>
+                </div>
+                <div class="form-group">
+                  <label for="moduleLargeur">Largeur</label>
+                  <input type="text" id="moduleLargeur" readonly>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="modulePuissance">Puissance</label>
+                <input type="text" id="modulePuissance" readonly>
+              </div>
+            </div>
+
+            <!-- Onduleurs + Informations Complémentaires -->
+            <div class="subcard">
+              <h3>Onduleurs</h3>
+              <div class="form-group">
+                <label for="onduleurSelect">Sélectionner un onduleur</label>
+                <select id="onduleurSelect" onchange="updateOnduleurInfo()"></select>
+              </div>
+              <div class="form-group">
+                <label for="onduleurFabricant">Fabricant</label>
+                <input type="text" id="onduleurFabricant" readonly>
+              </div>
+
+              <!-- Informations Complémentaires déplacées ici -->
+              <h3>Informations Complémentaires</h3>
+              <div class="card-content checkbox-group">
+                <div class="checkbox-item">
+                  <input type="checkbox" id="pdl">
+                  <label for="pdl">
+                    <span class="important">PDL</span> en limite de propriété
+                  </label>
+                </div>
+                <div class="checkbox-item">
+                  <input type="checkbox" id="raccordTGBT">
+                  <label for="raccordTGBT">
+                    Raccord au <span class="important">TGBT</span>
+                  </label>
+                </div>
+                <div class="checkbox-item">
+                  <input type="checkbox" id="tiersInvestisseur">
+                  <label for="tiersInvestisseur">Tiers Investisseur</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- Section Image Satellite -->
+        <section id="image-satellite" class="card">
+          <h2>Image Satellite</h2>
+          <div class="card-content image-upload">
+            <input type="file" id="imageSatellite" accept="image/*">
+            <img id="previewImage">
+          </div>
+        </section>
+
+        <!-- Section Détails du Chantier -->
+        <section id="details-chantier" class="card">
+          <h2>Détails du Chantier</h2>
+          <div class="card-content">
+            <div class="form-group">
+              <label for="lotPose">Lot Pose LT</label>
+              <textarea id="lotPose" placeholder="Saisir les détails du Lot Pose LT"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="lotVRD">Lot VRD</label>
+              <textarea id="lotVRD" placeholder="Saisir les détails du Lot VRD"></textarea>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section Coordonnées GPS & Adresse -->
+        <section id="coordonnees-adresse" class="card">
+          <h2>Coordonnées GPS et Adresse</h2>
+          <div class="card-content grid-two-columns">
+            <div>
+              <div class="form-group">
+                <label for="latitude">Latitude</label>
+                <input type="text" id="latitude" placeholder="Ex: 48.8566">
+              </div>
+              <div class="form-group">
+                <label for="longitude">Longitude</label>
+                <input type="text" id="longitude" placeholder="Ex: 2.3522">
+              </div>
+            </div>
+            <div>
+              <div class="form-group">
+                <label for="rue">Rue</label>
+                <input type="text" id="rue" placeholder="Nom de la rue">
+              </div>
+              <div class="grid-ville-cp">
+                <div class="form-group">
+                  <label for="ville">Ville</label>
+                  <input type="text" id="ville" placeholder="Nom de la ville">
+                </div>
+                <div class="form-group">
+                  <label for="codePostal">Code Postal</label>
+                  <input type="text" id="codePostal" placeholder="Ex: 75000">
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- Bouton d'Export -->
+        <button type="button" class="export-button" onclick="exportPDF()">
+          Exporter en PDF
+        </button>
+      </form>
+    </div>
+  </main>
+</body>
+</html>

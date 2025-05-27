@@ -1,0 +1,43 @@
+git clone https://databox.chavaroche-si.fr/chavaroche-si/tech-support/devel/databox/customtools/composants/relevefactures-form.git
+
+
+---------
+Publier du code 
+
+1- Ajouter les modifications
+
+git add -A
+
+2- Faire un commit
+
+git commit -m "Votre message de commit"
+
+3- Je publie
+
+git push
+
+
+
+----------
+Reppartir les commit
+
+1- Rapatrie les commit
+
+git fetch
+
+2- Rapatrier les fichiers
+
+git pull
+
+
+
+-----
+
+utilisation api
+
+pour push le le pdf qui resume les inf du relevefactures
+
+
+------
+mettre à jour les graphs
+faire le calcule du prix d'achat 

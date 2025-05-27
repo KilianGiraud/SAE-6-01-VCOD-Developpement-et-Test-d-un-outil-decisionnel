@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+.carte, #map {
+    height: 100vh;
+    width: 100%;
+}
+.control-panel {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    background: white;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+    max-width: 250px;
+    font-size: 14px;
+}
+.control-panel h3 {
+    margin-top: 0;
+    font-size: 16px;
+}
+.control-panel label {
+    display: block;
+    margin-bottom: 2px;
+}
+.control-panel input, .control-panel select {
+    width: 100%;
+    margin-bottom: 8px;
+    box-sizing: border-box;
+    padding: 4px;
+}
+.control-panel button {
+    width: 100%;
+    padding: 6px;
+    margin-bottom: 3px;
+    background: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+}
+.control-panel button:hover {
+    background: #0056b3;
+}

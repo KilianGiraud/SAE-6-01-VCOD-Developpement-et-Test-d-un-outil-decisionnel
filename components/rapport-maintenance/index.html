@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rapport de maintenance</title>
+  <link rel="stylesheet" href="component.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+</head>
+
+
+
+
+<body>
+    <!-- Formulaire principal pour le rapport de maintenance -->
+    <form class="form-container" id="maintenance-form">
+  
+      <!-- En-tête du formulaire contenant le logo et le titre -->
+      <div class="form-header">
+        
+        <!-- Conteneur du logo de l'entreprise -->
+        <div class="logo-container">
+          <img src="ECO_SOLAIRE_ENERGIES_Couleur.png" alt="Logo Eco Solaire Energies">
+        </div>
+  
+        <!-- Titre principal du rapport -->
+        <h1>Rapport de Maintenance</h1>
+  
+        <!-- Sélecteur de centrale pour choisir un site de maintenance -->
+        <label class="dtb-wp-selector-label">
+          Choisir une centrale 
+          <select id="dtb-wp-selector" dtb-query="771"></select>
+        </label>
+  
+      </div>
+  
+
+
+
+
+
+
+
+        <!-- Section pour les informations de contact du client -->
+    <div class="form-group">
+        
+        <!-- Titre de la section -->
+        <h3>Contact</h3>
+
+        <!-- Champ pour le nom du client -->
+        <label for="nom-client"><strong>Nom du client :</strong></label>
+        <input type="text" id="nom-client" placeholder="Nom du client">
+
+        <!-- Champ pour la date de la maintenance -->
+        <label for="date"><strong>Date :</strong></label>
+        <input type="date" id="date">
+
+        <!-- Champ pour l'adresse du site de maintenance -->
+        <label for="adresse"><strong>Adresse :</strong></label>
+        <input type="text" id="adresse" placeholder="Adresse">
+
+    </div>
+
+    
+
+
+
+
+
+
+        <!-- Section contenant les informations techniques de l'installation -->
+    <div class="form-group">
+
+        <!-- Titre de la section -->
+        <h3>Informations Techniques</h3>
+
+        <!-- Tableau pour organiser les données techniques -->
+        <table class="info-table">
+
+            <!-- Ligne pour la puissance installée -->
+            <tr>
+                <td><label for="puissance"><strong>Puissance installée</strong></label></td>
+                <td colspan="2">
+                    <input type="number" id="puissance" placeholder="Pcrête (kWc)" min="0" step="0.1">
+                </td>
+            </tr>
+
+            <!-- Ligne pour les informations sur les panneaux solaires -->
+            <tr>
+                <td><label for="panneaux"><strong>Panneaux</strong></label></td>
+                <td colspan="2">
+                    <textarea id="panneaux" placeholder="Nombre panneaux / Modèle de panneaux"></textarea>
+                </td>
+            </tr>
+
+            <!-- Début des informations sur les onduleurs -->
+            <tr>
+                <td rowspan="2"><strong>Onduleurs</strong></td>
+                <td><label for="nb-ond"><strong>NB :</strong></label></td>
+                <td><input type="number" id="nb-ond" placeholder="2" min="0"></td>
+            </tr>
+
+            <!-- En-tête des colonnes pour le modèle et le numéro de série des onduleurs -->
+            <tr>
+                <td><strong>Modèle</strong></td>
+                <td><strong># Série</strong></td>
+            </tr>
+
+            <!-- Génération dynamique des lignes pour les onduleurs A-F -->
+            <script>
+                // Liste des lettres correspondant aux différents onduleurs
+                const lettres = ["A", "B", "C", "D", "E", "F"];
+
+                // Génération des lignes du tableau avec un modèle et un numéro de série pour chaque onduleur
+                document.write(lettres.map(lettre => `
+                    <tr>
+                        <td>${lettre}</td>
+                        <td><input type="text" id="ond-model-${lettre.toLowerCase()}" placeholder="Modèle"></td>
+                        <td><input type="text" id="ond-serie-${lettre.toLowerCase()}" placeholder="# série"></td>
+                    </tr>
+                `).join(''));
+            </script>
+
+            <!-- Ligne pour ajouter des notes de suivi sur l'installation -->
+            <tr>
+                <td><label for="suivi"><strong>Suivi</strong></label></td>
+                <td colspan="2">
+                    <textarea id="suivi" placeholder="Notes de suivi"></textarea>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+
+
+
+      
+    
+    
+    
+
+
+
+
+
+        <!-- Section des points de contrôle du rapport de maintenance -->
+    <div class="form-page">
+
+        <!-- Titre principal de la section -->
+        <h2>Points de contrôle</h2>
+
+        <div class="form-group">
+            <!-- Tableau structurant les différents points de contrôle -->
+            <table class="form-table">
+                <thead>
+                    <tr>
+                        <th>Contrôle</th> <!-- Colonne pour le type de contrôle effectué -->
+                        <th>Conforme</th> <!-- Colonne indiquant si le contrôle est conforme ou non -->
+                        <th>Observation</th> <!-- Colonne pour ajouter des observations si nécessaire -->
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <!-- Contrôle des connexions du local technique et du PDL -->
+                    <tr>
+                        <td>Contrôle des connexions du local technique et PDL</td>
+                        <td>
+                            <input type="checkbox" id="controle-local-technique" class="checkbox" checked>
+                            <label for="controle-local-technique" class="checkbox-label"></label>
+                        </td>
+                        <td>
+                            <textarea class="custom-obs" id="controle-local-technique-obs" rows="5" cols="25" placeholder="Observations..."></textarea>
+                        </td>
+                    </tr>
+
+                    <!-- Vérification des armoires AC/DC -->
+                    <tr>
+                        <td>Vérification des armoires AC/DC</td>
+                        <td>
+                            <input type="checkbox" id="verif-armoires" class="checkbox" checked>
+                            <label for="verif-armoires" class="checkbox-label"></label>
+                        </td>
+                        <td>
+                            <textarea class="custom-obs" id="verif-armoires-obs" rows="5" cols="25" placeholder="Observations..."></textarea>
+                        </td>
+                    </tr>
+
+                    <!-- Contrôle des organes de sécurité -->
+                    <tr>
+                        <td>Contrôle des organes de sécurité</td>
+                        <td>
+                            <input type="checkbox" id="controle-securite" class="checkbox" checked>
+                            <label for="controle-securite" class="checkbox-label"></label>
+                        </td>
+                        <td>
+                            <textarea class="custom-obs" id="controle-securite-obs" rows="5" cols="25" placeholder="Observations..."></textarea>
+                        </td>
+                    </tr>
+
+                    <!-- Thermographie du local technique -->
+                    <tr>
+                        <td>Thermographie du local technique</td>
+                        <td>
+                            <input type="checkbox" id="thermo-local-technique" class="checkbox" checked>
+                            <label for="thermo-local-technique" class="checkbox-label"></label>
+                        </td>
+                        <td>
+                            <textarea class="custom-obs" id="thermo-local-technique-obs" rows="5" cols="25" placeholder="Observations..."></textarea>
+                        </td>
+                    </tr>
+
+                    <!-- Thermographie des modules -->
+                    <tr>
+                        <td>Thermographie des modules</td>
+                        <td>
+                            <input type="checkbox" id="thermo-modules" class="checkbox" checked>
+                            <label for="thermo-modules" class="checkbox-label"></label>
+                        </td>
+                        <td>
+                            <textarea class="custom-obs" id="thermo-modules-obs" rows="5" cols="25" placeholder="Observations..."></textarea>
+                        </td>
+                    </tr>
+
+                    <!-- Diagnostic et rapport sur l’état d’encrassement des modules -->
+                    <tr>
+                        <td>Diagnostic et rapport sur l’état d’encrassement des modules</td>
+                        <td>
+                            <select id="encrassement" class="selecteur-colore">
+                                <option class="feu-vert" value="faible">Faiblement encrassé</option>
+                                <option class="feu-orange" value="moyen">Moyennement encrassé</option>
+                                <option class="feu-rouge" value="tres">Très encrassé</option>
+                            </select>
+                        </td>
+                        <td>
+                            <textarea class="custom-obs" id="encrassement-obs" rows="5" cols="25" placeholder="Observations..."></textarea>
+                        </td>
+                    </tr>
+
+                    <!-- Nettoyage des armoires et coffrets -->
+                    <tr>
+                        <td>Nettoyage des armoires et coffrets</td>
+                        <td>
+                            <input type="checkbox" id="nettoyage-armoires" class="checkbox" checked>
+                            <label for="nettoyage-armoires" class="checkbox-label"></label>
+                        </td>
+                        <td>
+                            <textarea class="custom-obs" id="nettoyage-armoires-obs" rows="5" cols="25" placeholder="Observations..."></textarea>
+                        </td>
+                    </tr>
+
+                    <!-- Nettoyage des modules à la demande -->
+                    <tr>
+                        <td>Nettoyage des modules à la demande</td>
+                        <td>
+                            <input type="checkbox" id="nettoyage-modules" class="checkbox" checked>
+                            <label for="nettoyage-modules" class="checkbox-label"></label>
+                        </td>
+                        <td>
+                            <textarea class="custom-obs" id="nettoyage-modules-obs" rows="5" cols="25" placeholder="Observations..."></textarea>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    
+
+      
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Section dédiée aux vérifications et mesures du rapport de maintenance -->
+    <div class="form-page">
+
+        <!-- Titre principal de la section -->
+        <h2>Vérifications et Mesures</h2>   
+
+        <!-- Sous-section pour la vérification des tensions des onduleurs -->
+        <h3>Vérification des tensions Onduleurs</h3>
+
+        <!-- Tableau contenant les différentes mesures effectuées -->
+        <table class="form-table verification-tensions" id="table-verification">
+            <thead>
+                <tr>
+                    <th>Modèle</th> <!-- Type de modèle de l'onduleur -->
+                    <th>Puissance (kW)</th> <!-- Indication de la puissance en kW -->
+                    <th colspan="2">Entrées (MPPT)</th> <!-- Entrées des régulateurs MPPT -->
+                </tr>
+                <tr>
+                    <th colspan="2"></th> <!-- Cellules vides pour l'alignement -->
+                    <th>Numéro</th> <!-- Numéro de l'entrée MPPT -->
+                    <th>Valeur (V)</th> <!-- Valeur de la tension mesurée -->
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Première ligne de saisie des mesures -->
+                <tr>
+                    <td><input type="text" class="modele" placeholder="Modèle"></td> <!-- Saisie du modèle d'onduleur -->
+                    <td><input type="number" class="puissance" placeholder="Puissance (kW)" min="0" step="0.1"></td> <!-- Puissance en kW -->
+                    <td class="mppt-number">1</td> <!-- Numéro MPPT automatique -->
+                    <td><input type="number" class="mppt-valeur" placeholder="Valeur (V)" min="0" step="0.1"></td> <!-- Tension en volts -->
+                </tr>
+
+                <!-- Deuxième ligne de saisie des mesures -->
+                <tr>
+                    <td><input type="text" class="modele" placeholder="Modèle"></td> <!-- Saisie du modèle d'onduleur -->
+                    <td><input type="number" class="puissance" placeholder="Puissance (kW)" min="0" step="0.1"></td> <!-- Puissance en kW -->
+                    <td class="mppt-number">2</td> <!-- Numéro MPPT automatique -->
+                    <td><input type="number" class="mppt-valeur" placeholder="Valeur (V)" min="0" step="0.1"></td> <!-- Tension en volts -->
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Boutons permettant d'ajouter ou de supprimer une ligne de mesure -->
+        <button type="button" id="ajouter-ligne">➕ Ajouter une ligne</button> <!-- Ajout d'une nouvelle ligne -->
+        <button type="button" id="supprimer-ligne">➖ Supprimer la dernière ligne</button> <!-- Suppression de la dernière ligne -->
+    </div>
+
+
+
+
+
+      
+
+
+        <!-- Section dédiée à la vérification des continuités de terres et au contrôle d’isolement -->
+    <h3>Vérification des continuités de terres (contrôle d’isolement)</h3>
+
+    <!-- Tableau affichant les différentes mesures d'isolement et de résistance de terre -->
+    <table class="form-table">
+        <thead>
+            <tr>
+                <th>Type de contrôle</th> <!-- Type de test effectué -->
+                <th>Résultat (MΩ ou Ω)</th> <!-- Valeur du test en mégohms ou ohms -->
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Première ligne : Isolation phase-terre -->
+            <tr>
+                <td><label for="iso1">Isolation phase-terre</label></td> <!-- Libellé du test -->
+                <td>
+                    <input type="number" id="iso1" class="isolement" placeholder="Valeur en MΩ" min="0" step="0.1" required>
+                    <span class="unit">MΩ</span> <!-- Unité de mesure -->
+                </td>
+            </tr>
+
+            <!-- Deuxième ligne : Isolation neutre-terre -->
+            <tr>
+                <td><label for="iso2">Isolation neutre-terre</label></td> <!-- Libellé du test -->
+                <td>
+                    <input type="number" id="iso2" class="isolement" placeholder="Valeur en MΩ" min="0" step="0.1" required>
+                    <span class="unit">MΩ</span> <!-- Unité de mesure -->
+                </td>
+            </tr>
+
+            <!-- Troisième ligne : Résistance de terre -->
+            <tr>
+                <td><label for="iso3">Résistance de terre</label></td> <!-- Libellé du test -->
+                <td>
+                    <input type="number" id="iso3" class="isolement" placeholder="Valeur en Ω" min="0" step="0.1" required>
+                    <span class="unit">Ω</span> <!-- Unité de mesure -->
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    
+    
+    
+
+
+
+
+    
+  
+
+
+
+        <!-- Section dédiée à l'historique des relevés de production -->
+    <div class="form-group">
+        <h3>Historique</h3>
+        
+        <div class="table-container">
+            <!-- Tableau contenant l'historique des relevés de production -->
+            <table class="form-table" id="historique-table">
+                <thead>
+                    <tr>
+                        <th>Année</th> <!-- Colonne pour l'année du relevé -->
+                        <th>Relevé index</th> <!-- Colonne pour le relevé de l'index de production -->
+                        <th>Production réelle (kWh)</th> <!-- Colonne pour la production réelle en kWh -->
+                        <th>Production théorique (kWh)</th> <!-- Colonne pour la production théorique en kWh -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Première ligne de l'historique -->
+                    <tr>
+                        <td><input type="number" class="annee" placeholder="Année" min="2000" max="2100" required></td>
+                        <td><input type="number" class="releve-index" placeholder="Relevé index" min="0" step="0.1" required></td>
+                        <td><input type="number" class="prod-reelle" placeholder="Production réelle (kWh)" min="0" step="0.1" required></td>
+                        <td><input type="number" class="prod-theorique" placeholder="Production théorique (kWh)" min="0" step="0.1" required></td>
+                    </tr>
+
+                    <!-- Deuxième ligne de l'historique -->
+                    <tr>
+                        <td><input type="number" class="annee" placeholder="Année" min="2000" max="2100" required></td>
+                        <td><input type="number" class="releve-index" placeholder="Relevé index" min="0" step="0.1" required></td>
+                        <td><input type="number" class="prod-reelle" placeholder="Production réelle (kWh)" min="0" step="0.1" required></td>
+                        <td><input type="number" class="prod-theorique" placeholder="Production théorique (kWh)" min="0" step="0.1" required></td>
+                    </tr>
+
+                    <!-- Troisième ligne de l'historique -->
+                    <tr>
+                        <td><input type="number" class="annee" placeholder="Année" min="2000" max="2100" required></td>
+                        <td><input type="number" class="releve-index" placeholder="Relevé index" min="0" step="0.1" required></td>
+                        <td><input type="number" class="prod-reelle" placeholder="Production réelle (kWh)" min="0" step="0.1" required></td>
+                        <td><input type="number" class="prod-theorique" placeholder="Production théorique (kWh)" min="0" step="0.1" required></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Boutons permettant d'ajouter et de supprimer une ligne dans l'historique -->
+            <button id="add-row" type="button">➕ Ajouter une ligne</button> <!-- Ajout d'une nouvelle ligne -->
+            <button id="remove-row" type="button" disabled>➖ Supprimer la dernière ligne</button> <!-- Suppression de la dernière ligne (désactivé si aucune ligne à supprimer) -->
+        </div>
+    </div>
+
+
+
+      
+    
+
+    
+
+
+
+
+
+        <!-- Section dédiée à l'importation et l'affichage des photographies -->
+    <div class="form-group">
+        <h3>Photographies</h3>
+        
+        <div class="photo-grid"> <!-- Conteneur des éléments d'importation de photos -->
+            
+            <!-- Section pour la photo du local technique -->
+            <div class="photo-item">
+                <label for="local-technique"><strong>Local technique :</strong></label>
+                
+                <!-- Champ d'importation de fichier pour le local technique -->
+                <input type="file" id="local-technique" accept="image/png, image/jpeg, image/gif">
+                
+                <!-- Indication des formats et de la taille maximale autorisée -->
+                <small>Formats acceptés : JPG, PNG, GIF | Max : 7 Mo</small>
+                
+                <!-- Prévisualisation de l'image sélectionnée -->
+                <img id="preview-local-technique" src="local_technique.jpg" alt="Local technique" class="photo">
+                
+                <!-- Bouton permettant de supprimer la photo sélectionnée -->
+                <button type="button" class="remove-photo" data-target="local-technique">🗑️ Supprimer</button>
+            </div>
+
+            <!-- Section pour la photo de la toiture -->
+            <div class="photo-item">
+                <label for="toiture"><strong>Toiture :</strong></label>
+                
+                <!-- Champ d'importation de fichier pour la toiture -->
+                <input type="file" id="toiture" accept="image/png, image/jpeg, image/gif">
+                
+                <!-- Indication des formats et de la taille maximale autorisée -->
+                <small>Formats acceptés : JPG, PNG, GIF | Max : 5 Mo</small>
+                
+                <!-- Prévisualisation de l'image sélectionnée -->
+                <img id="preview-toiture" src="toiture.jpg" alt="Toiture" class="photo">
+                
+                <!-- Bouton permettant de supprimer la photo sélectionnée -->
+                <button type="button" class="remove-photo" data-target="toiture">🗑️ Supprimer</button>
+            </div>
+
+        </div>
+    </div>
+
+
+
+      
+    
+
+
+        <!-- Section pour la conclusion générale du rapport -->
+    <div class="form-group">
+        <h3>Conclusion Générale</h3>
+
+        <!-- Champ de texte permettant d'écrire un résumé de la maintenance -->
+        <label for="conclusion-generale"><strong>Résumé :</strong></label>
+        <textarea id="conclusion-generale" rows="6" cols="40" placeholder="Écrivez ici la conclusion générale..."></textarea>
+    </div>
+
+    <!-- Pied de page du formulaire contenant la date et la signature -->
+    <div class="form-footer">
+        <div class="signature-container">
+
+            <!-- Champ de sélection de la date de signature -->
+            <div class="signature-item">
+                <label for="date-signature"><strong>Date de signature :</strong></label>
+                <input type="date" id="date-signature">
+            </div>
+
+            <!-- Zone de signature électronique -->
+            <div class="signature-item">
+                <label for="signature-pad"><strong>Signature :</strong></label>
+                
+                <!-- Zone de dessin pour la signature -->
+                <canvas id="signature-pad" width="300" height="100" class="signature-box"></canvas>
+
+                <!-- Bouton permettant d'effacer la signature -->
+                <button type="button" id="clear-signature">🗑️ Effacer</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section des boutons d'action -->
+    <div class="button-container">
+
+        <!-- Bouton pour imprimer le rapport (caché en mode impression) -->
+        <button class="print-hide" id="submitButton">🖨️ Imprimer le rapport</button>
+
+        <!-- Bouton pour réinitialiser l'ensemble du formulaire (caché en mode impression) -->
+        <button class="print-hide" id="resetButton">🔄 Réinitialiser le formulaire</button>
+    </div>
+
+    
+
+
+
+
+
+
+      
+
+  </form>
+  <script src="index.js"></script>
+</body>

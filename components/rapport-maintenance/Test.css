@@ -1,0 +1,93 @@
+  /*
+   * Entête du formulaire
+   *
+   */
+   .form-header{
+    background-color: #032144 !important;
+  
+    background-image: url("ECO_SOLAIRE_ENERGIES_Couleur.png");
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: 25%;
+    padding-bottom: 1em;
+    border-radius: 4px;
+    text-align: center;
+  }
+  
+  .form-header img{
+    width: 33%;
+  }
+  
+  .form-header h1, label{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: white;
+  }
+  
+  .form-header input,
+  .form-header select,
+  .form-header button,
+  .form-header textarea {
+    width: 90%;
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .form-header button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .form-header button:hover {
+    background-color: #0056b3;
+  }
+
+  /*
+   * Entête du formulaire
+   *
+   */
+ 
+
+
+  /* ✅ Couleurs pour différencier les boutons imprimer et Reinitialiser */
+  #submitButton {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  #resetButton {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  #resetButton:hover {
+    background-color: #b02a37;
+  }
+/* ✅ Couleurs pour différencier les boutons imprimer et Reinitialiser */
+
+
+  /* Styles pour les options  de Diagnostic et rapport sur l’état d’encrassement des modules*/
+  .feu-vert {
+    background-color: lightgreen !important; /* Vert clair */
+    color: black;
+  }
+  
+  .feu-orange {
+    background-color: orange !important; /* Orange */
+    color: black;
+  }
+  
+  .feu-rouge {
+    background-color: red !important; /* Rouge */
+    color: white;
+  }
+  
+  .feu-vert ~ .custom-obs {
+    display: none;
+  }
+ /* Styles pour les options de Diagnostic et rapport sur l’état d’encrassement des modules*/
+   

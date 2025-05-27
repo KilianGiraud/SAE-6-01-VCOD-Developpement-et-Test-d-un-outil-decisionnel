@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Créer un Site PV</title>
+  <link rel="stylesheet" href="component.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="component-header.js"></script>
+</head>
+<body>
+  <form class="form-container" id="createproject-form" onsubmit="return false;">
+    <div class="form-page">
+      <div class="form-header">
+        <h1>Créer un Site PV</h1>
+      </div>
+      <div class="form-group">
+        <!-- Nom du chantier -->
+        <label for="nomChantier">Nom du site :</label>
+        <input type="text" id="nomChantier" name="nomChantier" placeholder="Entrez le nom du chantier" required>
+
+        <!-- Type de centrale -->
+        <label for="typeCentrale">Type de Centrale :</label>
+        <select id="typeCentrale" name="typeCentrale" onchange="specifier()" required placeholder="Sélectioner un type de centrale"></select>
+
+        <!-- Nom du client (si centrale Eco Solaire) -->
+        <div class="form-group-if">
+          <label for="nomDuClient">Nom du Client :</label>
+          <input type="text" id="nomDuClient" name="nomDuClient" placeholder="Exemple : GAEC BADUEL">
+        </div>
+          
+        <!-- Coordonnées GPS -->
+        <label for="coordonnesGPS">Coordonnées GPS :</label>
+        <input type="text" id="coordonnesGPS" name="coordonnesGPS" placeholder="Exemple : 48.8566 2.3522" onchange="calculzoneGPS()" required>
+      </div>
+    </div> 
+    <!-- Bouton de soumission -->
+    <div class="form-footer">
+      <button class="print-hide" onclick="creerChantier()">Créer le site</button>
+      <button class="print-hide" onclick="creerChantier(true)">Créer et renseigner le site</button>
+    </div>
+  </form>
+  <script>remplirSelection()</script>
+</body>
+</html>

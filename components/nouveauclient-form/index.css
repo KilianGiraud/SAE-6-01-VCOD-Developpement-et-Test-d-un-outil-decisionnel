@@ -1,0 +1,301 @@
+/* ========================= */
+/*        VARIABLES         */
+/* ========================= */
+:root {
+  --primary-color: #2c3e50;       /* Couleur principale (titre, éléments importants) */
+  --secondary-color: #3498db;     /* Couleur secondaire (accents, survol) */
+  --hover-color: #2980b9;         /* Couleur de survol */
+  --background-color: #f6f8fa;    /* Couleur de fond générale */
+  --card-background: #ffffff;     /* Couleur de fond des cartes */
+  --border-color: #bdc3c7;
+  --text-color: #333;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* ========================= */
+/*    RÉGLAGES GLOBAUX      */
+/* ========================= */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+/* ========================= */
+/*         HEADER           */
+/* ========================= */
+.header {
+  width: 100%;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  box-shadow: 0 4px 6px var(--shadow-color);
+  margin-bottom: 30px;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.header-container h1 {
+  color: #fff;
+  margin: 0;
+  font-size: 2em;
+  font-weight: 700;
+}
+
+/* ========================= */
+/*         MAIN             */
+/* ========================= */
+.main-content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* ========================= */
+/*         CONTAINER        */
+/* ========================= */
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* ========================= */
+/*          CARDS           */
+/* ========================= */
+.card {
+  background-color: var(--card-background);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px var(--shadow-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+.card h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.5em;
+  border-bottom: 2px solid var(--secondary-color);
+  padding-bottom: 5px;
+}
+
+/* Pour forcer la pleine largeur dans la grille */
+.full-width {
+  grid-column: 1 / -1;
+}
+
+/* ========================= */
+/*    SOLUTION-CONTAINER    */
+/* ========================= */
+.solution-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.subcard {
+  background-color: var(--background-color);
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 1px 3px var(--shadow-color);
+  flex: 1;
+  min-width: 280px;
+}
+
+.subcard h3 {
+  margin-top: 0;
+  font-size: 1.2em;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+/* ========================= */
+/*       FORM GROUPS        */
+/* ========================= */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: var(--primary-color);
+}
+
+input, select, textarea {
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  font-size: 1em;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 5px var(--hover-color);
+  outline: none;
+}
+
+textarea {
+  min-height: 60px;
+  resize: vertical;
+}
+
+/* ========================= */
+/*       IMAGE UPLOAD       */
+/* ========================= */
+.image-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.image-upload input[type="file"] {
+  border: none;
+  padding: 5px 0;
+}
+
+.image-upload img {
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px var(--shadow-color);
+  transition: transform 0.3s ease;
+}
+
+.image-upload img:hover {
+  transform: scale(1.03);
+}
+
+/* ========================= */
+/*     CHECKBOX GROUP       */
+/* ========================= */
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Mettez en évidence les éléments importants */
+.important {
+  font-weight: bold;
+  color: var(--secondary-color);
+}
+
+/* ========================= */
+/*  GRID-TWO-COLUMNS        */
+/* ========================= */
+.grid-two-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .grid-two-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========================= */
+/*        BOUTON EXPORT     */
+/* ========================= */
+.export-button {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, var(--secondary-color), var(--hover-color));
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1em;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+.export-button:hover {
+  background: linear-gradient(135deg, var(--hover-color), var(--secondary-color));
+  transform: scale(1.02);
+}
+
+/* ========================= */
+/*          FOOTER          */
+/* ========================= */
+.footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 20px;
+  font-size: 0.9em;
+  color: #777;
+  background-color: #fff;
+  box-shadow: 0 -2px 4px var(--shadow-color);
+}
+
+/* ========================= */
+/*      VILLE + CODE POSTAL  */
+/* ========================= */
+.grid-ville-cp {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.grid-ville-cp .form-group {
+  flex: 1;
+  min-width: 45%;
+}
+
+/* Responsive : Affichage vertical sur petits écrans */
+@media (max-width: 768px) {
+  .grid-ville-cp {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* ========================= */
+/*      LONGUEUR + LARGEUR  */
+/* ========================= */
+.grid-longueur-largeur {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.grid-longueur-largeur .form-group {
+  flex: 1;
+  min-width: 45%;
+}
+
+/* Responsive : Affichage vertical sur petits écrans */
+@media (max-width: 768px) {
+  .grid-longueur-largeur {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

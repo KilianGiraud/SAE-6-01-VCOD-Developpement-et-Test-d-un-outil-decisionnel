@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relevé de Consommation Électrique</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <h1>Description Consommation</h1>
+    <div class="form-section">
+        <label>Plages heures creuses :</label>
+        <div id="plagesContainer">
+            <div class="plage">
+                <input type="time" class="heureDebut" required> à <input type="time" class="heureFin" required>
+            </div>
+        </div>
+        <button type="button" onclick="ajouterPlage()">Ajouter une plage</button>
+        <label for="puissance">Puissance compteur :</label>
+        <input type="number" id="puissance" placeholder="54">
+        <button type="button" id="heuButton" onclick="toggleOption('heu')">HE/U</button>
+        <button type="button" id="hchpButton" onclick="toggleOption('hchp')">HC/HP</button>
+    </div>
+    
+
+    <body>
+        <h1>Relevé Consommation</h1>
+        <form id="electricityForm">
+            <label for="periode">Période :</label>
+            <select id="periode" required>
+                <option value="Janvier-Février">Janvier - Février</option>
+                <option value="Février-Mars">Février - Mars</option>
+                <option value="Mars-Avril">Mars - Avril</option>
+                <option value="Avril-Mai">Avril - Mai</option>
+                <option value="Mai-Juin">Mai - Juin</option>
+                <option value="Juin-Juillet">Juin - Juillet</option>
+                <option value="Juillet-Août">Juillet - Août</option>
+                <option value="Août-Septembre">Août - Septembre</option>
+                <option value="Septembre-Octobre">Septembre - Octobre</option>
+                <option value="Octobre-Novembre">Octobre - Novembre</option>
+                <option value="Novembre-Décembre">Novembre - Décembre</option>
+            </select>
+            <label for="consoHPH">Conso HPH :</label>
+            <input type="number" id="consoHPH" required>
+            <label for="consoHCH">Conso HCH :</label>
+            <input type="number" id="consoHCH" required>
+            <label for="consoHPE">Conso HPE :</label>
+            <input type="number" id="consoHPE" required>
+            <label for="consoHCE">Conso HCE :</label>
+            <input type="number" id="consoHCE" required>
+            <label for="prix">Montant Facture (€) :</label>
+            <input type="number" step="0.01" id="prix" required>
+            <button type="button" onclick="ajouterReleve()">Ajouter</button>
+        </form>
+        <table id="releveTable">
+            <thead>
+                <tr>
+                    <th>Période</th>
+                    <th>Conso HPH</th>
+                    <th>Conso HCH</th>
+                    <th>Conso HPE</th>
+                    <th>Conso HCE</th>
+                    <th>Total Conso</th>
+                    <th>Montant Facture (€)</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>Total</td>
+                    <td id="totalHPH">0</td>
+                    <td id="totalHCH">0</td>
+                    <td id="totalHPE">0</td>
+                    <td id="totalHCE">0</td>
+                    <td id="totalConso">0</td>
+                    <td id="totalPrix">0 €</td>
+                </tr>
+            </tfoot>
+        </table>
+    <p>Prix d'achat : 0,18 €</p>
+
+    <button type="button" onclick="afficherGraphiques()">Interpolation</button>
+    <canvas id="graphRepartition" width="400" height="200"></canvas>
+    <canvas id="graphHiver" width="400" height="200"></canvas>
+    <canvas id="graphEte" width="400" height="200"></canvas>
+
+</body>
+</html>

@@ -1,0 +1,307 @@
+/*
+ * Comportement global du formulaire
+ */ 
+ * { /*assure un impression correcte*/
+  color-adjust: exact!important;  
+  -webkit-print-color-adjust: exact!important; 
+   print-color-adjust: exact!important;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #032144;
+}
+
+.form-container {
+  background: #fff;
+  padding: 20px 40px 20px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 1000px;
+}
+/*
+ * 
+ */
+.form-page h2 {
+  color: #032144;
+
+}
+/*
+ * Entête du formulaire
+ *
+ */
+.form-header{
+  background-color: #032144 !important;
+
+  background-image: url("ECO_SOLAIRE_ENERGIES_Couleur.png");
+  background-position: top left;
+  background-repeat: no-repeat;
+  background-size: 25%;
+  padding-bottom: 1em;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.form-header img{
+  width: 33%;
+}
+
+.form-header h1, label{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.form-header input,
+.form-header select,
+.form-header button,
+.form-header textarea {
+  width: 90%;
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+}
+
+.form-header button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.form-header button:hover {
+  background-color: #0056b3;
+}
+
+/*
+ * Groupe de champs de l'interface
+ *
+ */
+.form-group {
+  display: block;
+  margin-bottom: 15px;
+}
+
+.form-group h3 {
+  color: #032144;
+}
+
+.form-group label {
+  display: flex;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #032144;
+}
+
+.form-group input,
+.form-group select,
+.form-group button,
+.form-group textarea {
+  width: 90%;
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+}
+
+.form-group button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.form-group button:hover {
+  background-color: #0056b3;
+}
+/*
+ * Element de groupe conditionel
+ *
+ */
+.form-group-if  {
+  display: none;
+  margin-bottom: 15px;
+  padding-top: 2em;
+}
+
+.form-group-if label {
+  display: flex;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group-if input,
+.form-group-if select,
+.form-group-if button,
+.form-group-if textarea {
+  width: 90%;
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+}
+
+.form-group-if button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.form-group-if button:hover {
+  background-color: #0056b3;
+}
+
+.hiddenInfos {
+  display: none;
+}
+
+.form-footer {
+  display: flex;
+  margin-bottom: 15px;
+  padding-top: 2em;
+}
+
+.form-footer input,
+.form-footer select,
+.form-footer button,
+.form-footer textarea {
+  width: 90%;
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+}
+
+.form-footer label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-footer button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  margin: auto;
+}
+
+.form-footer button:hover {
+  background-color: #0056b3;
+}
+/*
+ * Elements specifiques
+ *
+ */
+.form-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.form-table th, td {
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+.form-table th {
+  background-color: #f2f2f2;
+}
+
+.signature {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.photo {
+  width: 100%;
+  max-width: 200px;
+  margin-top: 10px;
+}
+
+/* Masquer la case native */
+input[type="checkbox"] {
+  display: none;
+}
+
+/* Styliser un label comme case à cocher */
+.custom-checkbox {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  background-color: rosybrown;
+  border-color: red;
+}
+
+/* Style lorsque cochée */
+input[type="checkbox"]:checked + .custom-checkbox {
+  background-color: lightgreen;
+  border-color: green;
+}
+
+/* Ajouter une coche */
+input[type="checkbox"]:checked + .custom-checkbox::after {
+  content: 'X';
+  font-size: 16px;
+  color: green;
+  position: absolute;
+  top: 2px;
+  left: 4px;
+}
+
+/* Style lorsque cochée */
+input[type="checkbox"]:checked ~ .custom-obs {
+  display: none;
+}
+
+/* Styles pour les options */
+.feu-vert {
+  background-color: lightgreen !important; /* Vert clair */
+  color: black;
+}
+
+.feu-orange {
+  background-color: orange !important; /* Orange */
+  color: black;
+}
+
+.feu-rouge {
+  background-color: red !important; /* Rouge */
+  color: white;
+}
+
+.feu-vert ~ .custom-obs {
+  display: none;
+}
+/*
+ * Pour une mise en page lors de l'impression
+ */
+@media print {
+  body {
+    background-color: white;
+  }
+
+  .form-container  {
+    box-shadow: none;
+  }
+
+  .form-page {
+    page-break-before: always;
+  }
+  .print-hide {
+    display: none;
+  }
+}

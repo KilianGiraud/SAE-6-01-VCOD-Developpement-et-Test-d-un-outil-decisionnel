@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Centrales Photovoltaïques</title>
+  <link rel="stylesheet" href="index.css"> <!-- Lien avec la feuille de style css -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/> <!-- Utilisation de la bibliothèque leaflet css pour la cartographie -->
+</head>
+<body>
+  <!-- Création d'un formulaire pour les choix d'affichage -->
+  <form onsubmit="return false;">
+    <div class="control-panel">
+      <h3>Paramètres</h3>
+      <label for="city">Ville :</label>
+      <input type="text" id="city" placeholder="ex: Aurillac" value="Aurillac"> <!-- Ville d'Aurillac séléctionner par défaut pour la clientèle -->
+      
+      <!-- Séléction du mode d'affichage : n plus proches ou périmètre -->
+      <label for="mode">Mode d'affichage :</label>
+      <select id="mode">
+        <option value="closest">N centrales les plus proches</option>
+        <option value="perimeter">Toutes les centrales dans le périmètre</option>
+      </select>
+
+      <label for="radius">Périmètre (km) :</label>
+      <input type="number" id="radius" value="20"> <!-- 20 km de radius par défaut -->
+
+      <label for="nCentrales">Nombre de centrales :</label>
+      <input type="number" id="nCentrales" value="10" min="1"> <!-- 10 plus proche par défaut -->
+      
+      <button id="updateBtn">Mettre à jour</button>
+
+      <button id="locateBtn" onclick="locateUser()">📍 Me localiser</button>
+
+    </div>
+  </form>
+
+  <!-- Mise en place de la carte -->
+  <div id="map" class="carte"></div>
+
+  <script src="index.js" defer></script> <!-- Lien avec le script javascript -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script> <!-- Utilisation de la bibliothèque leaflet js pour la cartographie -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script> <!-- Utilisation de la bibliothèque papaparse pour le traitement du fichier csv -->
+</body>
+</html>
