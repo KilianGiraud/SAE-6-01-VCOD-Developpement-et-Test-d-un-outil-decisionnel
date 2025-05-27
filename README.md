@@ -1,4 +1,4 @@
-# Composant principale 
+# Composant principal
 *Réalisé par Kilian Giraud*
 
 ## Principe du composant
